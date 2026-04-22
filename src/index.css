@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Rajdhani:wght@300;400;500;600;700&family=Saira+Stencil:ital,wght@0,100..900;1,100..900&family=Sarpanch:wght@400;500;600;700;800;900&display=swap');
+
 *{
+  font-family: "Rajdhani", sans-serif;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: #87eb15;
+  background: radial-gradient(circle, rgba(135, 235, 21, 1) 0%, rgba(11, 186, 26, 1) 100%);
 }
