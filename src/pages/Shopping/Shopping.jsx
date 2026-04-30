@@ -5,6 +5,7 @@ import { getProducts } from '../../data/data'
 const Shopping = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [quantities, setQuantities] = useState({})
 
   useEffect(() => {
     getProducts().then(data => {
@@ -12,6 +13,13 @@ const Shopping = () => {
       setLoading(false)
     })
   }, [])
+
+  const updateQuantity = (productId, newQuantity) => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [productId]: newQuantity
+    }))
+  }
 
   return (
     <div className="shopping">
@@ -22,10 +30,20 @@ const Shopping = () => {
         <div className="products-container">
           {products.map(product => (
             <div key={product.id} className="product-card">
-              <img src={product.image} alt={product.title} width="150" />
-              <h3>{product.title}</h3>
-              <p className="price">${product.price.toFixed(2)}</p>
-              <button>Add to Cart</button>
+              <div className='product-image-container'>
+                <img src={product.image} alt={product.title} width="150"/>
+              </div>
+              <div className='product-details'>
+                <h3>{product.title}</h3>
+                <h4 style={{ textTransform: 'capitalize' }}>{product.category}</h4>
+                <p className="price">${product.price.toFixed(2)}</p>
+                <div className='quantity-container'>
+                  <button onClick={() => updateQuantity(product.id, Math.max(0, quantities[product.id] - 1))}>-</button>
+                  <span>{quantities[product.id] || 1}</span>
+                  <button onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) + 1)}>+</button>
+                </div>
+                <button>Add to Cart</button>
+              </div>
             </div>
           ))}
         </div>
