@@ -2,10 +2,21 @@ import React, { useState, useEffect } from 'react'
 import './Shopping.css'
 import { getProducts } from '../../data/data'
 
+const loadingPhrases = [
+  "Summoning items...",
+  "Powering up...",
+  "Engaging hyperdrive...",
+  "Gearing up...",
+  "Beaming up products...",
+  "Hold on tight...",
+  "Just Wait For A Moment:)..."
+];
+
 const Shopping = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [quantities, setQuantities] = useState({})
+  const [loaderText] = useState(() => loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)])
 
   useEffect(() => {
     getProducts().then(data => {
@@ -25,7 +36,14 @@ const Shopping = () => {
     <div className="shopping">
       <h2>Our Products</h2>
       {loading ? (
-        <p>Loading products...</p>
+        <div className="futuristic-loader-container">
+          <div className="futuristic-loader">
+            <div className="loader-ring"></div>
+            <div className="loader-ring"></div>
+            <div className="loader-ring"></div>
+            <div className="loader-text">{loaderText}</div>
+          </div>
+        </div>
       ) : (
         <div className="products-container">
           {products.map(product => (
