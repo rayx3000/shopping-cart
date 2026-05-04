@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <Header cartItemCount={cart.reduce((total, item) => total + item.quantity, 0)} />
+      <Header cartItemCount={cart.length} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shopping addToCart={addToCart} />} />

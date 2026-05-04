@@ -131,5 +131,13 @@
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: bold;
+}
 
+.checkout-btn:hover{
+    background-color: #1dbb0c;
+}
+
+.checkout-btn:active{
+    background-color: #0f7a07;
+    transform: scale(0.98);
 }
