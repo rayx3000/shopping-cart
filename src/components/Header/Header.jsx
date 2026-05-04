@@ -21,10 +21,10 @@ const Header = ({ cartItemCount = 0 }) => {
               </Link>
             </li>
             <li>
-              <Link className='nav-link' to="/cart">
+              <Link className='nav-link shopping-cart-icon' to="/cart">
                 <span><i className="fa-solid fa-shopping-cart"></i></span>
                 {cartItemCount > 0 && (
-                  <span className="cart-badge" style={{ marginLeft: '5px', backgroundColor: 'red', borderRadius: '50%', padding: '2px 6px', fontSize: '0.8rem', color: 'white' }}>{cartItemCount}</span>
+                  <span className="cart-badge" style={{ marginLeft: '5px', backgroundColor: '#0f7a07', borderRadius: '50%', padding: '2px 6px', fontSize: '0.8rem', color: 'white' }}>{cartItemCount}</span>
                 )}
               </Link>
             </li>
