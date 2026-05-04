@@ -12,7 +12,7 @@ const loadingPhrases = [
   "Just Wait For A Moment:)..."
 ];
 
-const Shopping = () => {
+const Shopping = ({ addToCart }) => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [quantities, setQuantities] = useState({})
@@ -31,6 +31,13 @@ const Shopping = () => {
       [productId]: newQuantity
     }))
   }
+
+  const handleAddToCart = (product) => {
+    const quantity = quantities[product.id] !== undefined ? quantities[product.id] : 1;
+    if (quantity > 0) {
+      addToCart(product, quantity);
+    }
+  };
 
   return (
     <div className="shopping">
@@ -56,11 +63,11 @@ const Shopping = () => {
                 <h4 style={{ textTransform: 'capitalize' }}>{product.category}</h4>
                 <p className="price">${product.price.toFixed(2)}</p>
                 <div className='quantity-container'>
-                  <button onClick={() => updateQuantity(product.id, Math.max(0, quantities[product.id] - 1))}>-</button>
-                  <span>{quantities[product.id] || 1}</span>
-                  <button onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) + 1)}>+</button>
+                  <button onClick={() => updateQuantity(product.id, Math.max(1, (quantities[product.id] !== undefined ? quantities[product.id] : 1) - 1))}>-</button>
+                  <span>{quantities[product.id] !== undefined ? quantities[product.id] : 1}</span>
+                  <button onClick={() => updateQuantity(product.id, (quantities[product.id] !== undefined ? quantities[product.id] : 1) + 1)}>+</button>
                 </div>
-                <button>Add to Cart</button>
+                <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
             </div>
           ))}

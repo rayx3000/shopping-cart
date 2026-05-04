@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Header.css'
 
-const Header = () => {
+const Header = ({ cartItemCount = 0 }) => {
   return (
     <header>
         <h1>RayxShop</h1>
@@ -23,6 +23,9 @@ const Header = () => {
             <li>
               <Link className='nav-link' to="/cart">
                 <span><i className="fa-solid fa-shopping-cart"></i></span>
+                {cartItemCount > 0 && (
+                  <span className="cart-badge" style={{ marginLeft: '5px', backgroundColor: 'red', borderRadius: '50%', padding: '2px 6px', fontSize: '0.8rem', color: 'white' }}>{cartItemCount}</span>
+                )}
               </Link>
             </li>
           </ul>
