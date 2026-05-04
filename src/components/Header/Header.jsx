@@ -11,13 +11,13 @@ const Header = ({ cartItemCount = 0 }) => {
             <li>
               <Link className='nav-link' to="/">
                 <span><i className="fa-solid fa-house"></i></span>
-                <span>Home</span>
+                <span className='label'>Home</span>
               </Link>
             </li>
             <li>
               <Link className='nav-link' to="/shop">
                 <span><i className="fa-solid fa-shopping-bag"></i></span>
-                <span>Shop</span>
+                <span className='label'>Shop</span>
               </Link>
             </li>
             <li>
