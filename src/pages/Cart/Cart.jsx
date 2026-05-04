@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Dialog from '../../components/Dialog/Dialog'
 import './Cart.css'
 
 const Cart = ({ cart, removeFromCart, setCart }) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const updateQuantity = (productId, newQuantity) => {
@@ -19,7 +21,7 @@ const Cart = ({ cart, removeFromCart, setCart }) => {
       <h1>Your Shopping Cart</h1>
       {cart.length === 0 ? (
         <div className="empty-cart">
-          <p>Your cart is currently empty.</p>
+          <h1>Your cart is currently empty.</h1>
           <Link to="/shop"><button style={{ marginTop: '10px' }}>Return to Shop</button></Link>
         </div>
       ) : (
@@ -41,10 +43,11 @@ const Cart = ({ cart, removeFromCart, setCart }) => {
           ))}
           <div className="cart-summary" style={{ textAlign: 'right', marginTop: '20px' }}>
             <h3>Total: ${total.toFixed(2)}</h3>
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <button className="checkout-btn" onClick={() => setIsDialogOpen(true)}>Proceed to Checkout</button>
           </div>
         </div>
       )}
+      <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} onClearCart={() => setCart([])} />
     </div>
   )
 }

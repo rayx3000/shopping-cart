@@ -1,0 +1,50 @@
+.checkout-dialog {
+  background: #65f54c;
+  background: linear-gradient(15deg, rgba(101, 245, 76, 0.75) 0%, rgba(149, 224, 83, 1) 50%, rgba(175, 237, 83, 0.75) 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.checkout-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.checkout-dialog p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.dialog-actions button {
+  background-color: #14a105;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-actions button:hover {
+  background-color: #1dbb0c;
+}
+
+.dialog-actions button:active {
+  background-color: #0f7a07;
+  transform: scale(0.98);
+}
